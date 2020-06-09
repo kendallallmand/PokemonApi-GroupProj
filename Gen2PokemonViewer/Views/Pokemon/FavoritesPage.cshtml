@@ -1,0 +1,25 @@
+﻿@model List<NameAndUrl>
+
+<h1 style="color:#FFCB05;">PokeFavorites</h1>
+
+    <div style="background-image:url(../Content/Images/Source/641-6412603_pokemon-dialog-box-pokemon-text-box-png-transparent.png); background-repeat:no-repeat; background-size:99% 99%; position:relative; padding-bottom:90px;">
+        <div style="position:relative; height:99%; width:80%; left:6%; top:50px; padding-bottom:120px;">
+<table style=" 
+        position: relative;
+        left: 38%;
+        margin-left: auto;
+        margin-right: auto;">
+            @foreach (NameAndUrl p in Model)
+            {
+    <tr>
+        <td style="color:#003A70; font-weight:bold;">@(char.ToUpper(p.Name[0]) + p.Name.Substring(1))</td>
+
+
+     
+        <td><img src="~/Content/Images/8-bit-pc-png-2.png" style="position:sticky; resize:both; width:7%; height:auto;" /><a href="/Pokemon/PokemonResults?id=@p.Url.Split('/')[^2]">PokeInfo</a></td>
+    </tr>
+            }
+</table>
+            </div>
+    </div>
+

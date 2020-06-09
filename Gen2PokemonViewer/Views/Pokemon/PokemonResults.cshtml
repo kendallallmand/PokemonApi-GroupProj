@@ -1,0 +1,65 @@
+﻿
+@model Gen2PokemonViewer.Models.Pokemon
+
+@{
+    ViewData["Title"] = "PokemonResults";
+}
+
+  
+        <div style="background-image:url(../Content/Images/Source/641-6412603_pokemon-dialog-box-pokemon-text-box-png-transparent.png); background-repeat:no-repeat; background-size:99% 99%; position:relative">
+            <div style="position:relative; height:80%; width:80%; left:6%; top:50px; padding-bottom:30px;">
+                <h1>Poke-Index #@Model.InternalId</h1>
+                <hr />
+                <dl class="row" style="padding-top:10px;">
+                    <dt class="col-sm-2">
+                        Name
+                    </dt>
+                    <dd class="col-sm-10">
+                        @(char.ToUpper(Model.Name[0]) + Model.Name.Substring(1))
+                    </dd>
+                    <dt class="col-sm-2">
+                        @{
+                            string numstr = Model.Height.ToString();
+                            int splitat = numstr.Length - 1;
+                            string before = numstr.Substring(0, splitat);
+                            string after = numstr.Substring(splitat);
+                        }
+                        Height
+                    </dt>
+                    <dd class="col-sm-10">
+                        @before.@after m
+                    </dd>
+                    <dt class="col-sm-2">
+                        @{
+                            string wtStr = Model.Weight.ToString();
+                            int splitWt = wtStr.Length - 1;
+                            string WtBefore = wtStr.Substring(0, splitWt);
+                            string WtAfter = wtStr.Substring(splitWt);
+                        }
+                        Weight
+                    </dt>
+                    <dd class="col-sm-10" style="padding-bottom:50px;">
+                        @WtBefore.@WtAfter kg                    
+                    </dd>
+                </dl>               
+                <divimg>
+                    <img style="position: relative; width: 13%; height: auto; top: -160px; left: 58%; border: solid; background-image:url(../Content/Images/urbbkg.jpg)" src=@Model.Sprites.FrontDefault>
+                    <img style="position: relative; width: 13%; height: auto; top: -160px; left: 58%; border: solid; background-image:url(../Content/Images/mtnbkg.jpg)" src=@Model.Sprites.BackDefault>
+                    <img style="position: relative; width: 13%; height: auto; top: -160px; left: 58%; border: solid; background-image:url(../Content/Images/cavebkg.jpg)" src=@Model.Sprites.FrontShiny>
+                    @if (ViewBag.UserId != "null")
+                    {
+                        if (ViewBag.IsFavorited)
+                        {
+                            <a href="/Pokemon/RemoveFavorite?id=@Model.InternalId")"> <img src="~/Content/Images/Rem.png" style="resize:both; width:10%; height:auto; position:relative; left:32%; top: -27px; padding-bottom:65px"/> </a>
+                        }
+                        else
+                        {
+                            <a href="/Pokemon/AddFavorite?id=@Model.InternalId")"><img src="~/Content/Images/Add.png" style="resize:both; width:10%; height:auto; position:relative; left:32%; top:-27px; padding-bottom:65px;"/></a>
+                        }
+                    }
+                </divimg> 
+            </div>
+        </div>
+ <div>
+ </div>
+

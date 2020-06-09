@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <UserSecretsId>aspnet-Gen2PokemonViewer-48B7B950-AFA6-42AA-8AED-3C3ED2A46492</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <None Include="wwwroot\Content\Images\Background.png" />
+      <None Include="wwwroot\Content\Images\Footer.jpg" />
+      <None Include="wwwroot\Content\Images\Header.jpg" />
+      <None Include="wwwroot\Content\Images\MobileView.png" />
+      <None Include="wwwroot\Content\Images\Source\click-for-full-sized-image-battle-backgrounds-pokemon-battle-background-11562899183oqgrxjkkgp.png" />
+      <None Include="wwwroot\Content\Images\Source\DS DSi - Pokemon HeartGold SoulSilver - Battle Bases.png" />
+      <None Include="wwwroot\Content\Images\Source\e29fcf33bededebd2ce08350c1c52df4.jpg" />
+      <None Include="wwwroot\Content\Images\Source\Game Boy GBC - Pokemon Gold Silver - Fuschia.png" />
+      <None Include="wwwroot\Content\Images\Source\pokemon-gold-and-silver-nintendo-space-world-video-game-kanto-frames-silver-png-clip-art.png" />
+      <None Include="wwwroot\Content\Images\Source\pokemon-golden-silver-battle-backgrounds-variety-of-colors-png-clipart.jpg" />
+      <None Include="wwwroot\Content\Images\Source\worldview.png" />
+      <None Include="wwwroot\Content\Images\urbanbkg.jpg" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.3" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.3" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.3" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.3" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.3" />
+        <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Update="Views\Pokemon\Search.cshtml">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,64 @@
+@using Microsoft.AspNetCore.Mvc.Diagnostics
+@model List<NameAndUrl>
+
+<link href="~/Content/styles.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript">
+    function doHover(id){
+        var current = document.getElementsByClassName("active");
+
+        // If there's no active class
+        if (current.length > 0) {
+          current[0].className = current[0].className.replace(" active", "");
+        }
+        document.getElementById(id).className += " active";
+    }
+    function unHover(id){
+        let className = document.getElementById(id).className
+        document.getElementById(id).className = className.replace(" active", "");
+    }
+    window.onload = function() {document.getElementById("@("select"+ViewBag.PerPage)").selected = true;}
+</script>
+<h2 style="color:#FFCB05">Search Pokemon</h2>
+<form action="/Pokemon/Search" method="get">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputName-sizing">Pokemon Name</span>
+        </div>
+        <input type="text" name="q" value="@ViewBag.Query" class="form-control" aria-label="Game Name" aria-describedby="inputName-Sizing">
+        <div class="input-group-append">
+            <span class="input-group-text input-group-prepend" id="basic-addon2">Results Per Page</span>
+            <select name="perPage" class="custom-select w-25" aria-describedby="basic-addon2">
+                <option id="select10" value="10">10</option>
+                <option id="select25" value="25">25</option>
+                <option id="select50" value="50">50</option>
+                <option id="select100" value="100">100</option>
+            </select>
+            <input type="submit" class="btn btn-primary" value="Search!"/>
+        </div>
+    </div>
+</form>
+@for (int i=0;i<Model.Count;i++)
+{
+<div class="list-group">
+    <a href="/Pokemon/PokemonResults?id=@(Model[i].Url.Split('/')[^2])" id="@i" class="list-group-item list-group-item-action" onmouseover="doHover(@i)" onmouseleave="unHover(@i)">
+        #@(Model[i].Url.Split('/')[^2]) @(char.ToUpper(Model[i].Name[0]) + Model[i].Name.Substring(1))
+    </a>
+    </div>
+}
+@{
+    int startPage = Math.Max(ViewBag.Page-5, 0);
+    int endPage = Math.Min(ViewBag.Pages, ViewBag.Page + 5);
+
+    for (int i = startPage; i < endPage; i++)
+    {
+        if (i == ViewBag.Page)
+        {
+            <span class="disabled">@(i+1)</span>
+        }
+        else
+        {
+            <a href="/Pokemon/Search?q=@ViewBag.Query&page=@i&perPage=@ViewBag.PerPage">@(i+1)</a>
+        }
+    }
+}
